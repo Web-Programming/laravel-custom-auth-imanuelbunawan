@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// metode nya get lalu masukkan namespace AuthController 
+// metode nya get lalu masukkan namespace AuthController
 // attribute name merupakan penamaan dari route yang kita buat
 // kita tinggal panggil fungsi route(name) pada layout atau controller
 Route::get('login', [AuthController::class,'index'])->name('login');
@@ -43,3 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('user', UserController::class);
     });
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
